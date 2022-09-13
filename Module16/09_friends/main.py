@@ -8,6 +8,8 @@ def voucher_list(number):
     voucher[among-1] -= how_many
     voucher[whom-1] += how_many
     return voucher
+
+
 def balance(man):
     total = 0
     for debt in range(len(receipt_list)):

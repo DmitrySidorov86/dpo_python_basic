@@ -1,13 +1,8 @@
 def palindrom_check(list):
-    palindrom = True
-    counter = 0
     for i in range(round(len(list) / 2)):
-        if list[i] == list[-1 - counter]:
-            counter += 1
-        else:
-            palindrom = False
-            break
-    return palindrom
+        if list[i] != list[-1 - i]:
+            return False
+    return True
 
 numbers = int(input('Кол-во чисел: '))
 number_list =[]
