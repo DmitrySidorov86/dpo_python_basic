@@ -1,7 +1,7 @@
 def change(x):
     for letter in alphabet:
         if x == letter:
-            return alphabet[alphabet.index(x)+code]
+            return alphabet[alphabet.index(x)%alphabet.index(x)+code]
 
 
 alphabet = 'абвгдеёжзиклмнопрстуфхцчшщъыьэюя'
