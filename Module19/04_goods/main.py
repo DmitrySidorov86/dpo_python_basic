@@ -24,4 +24,15 @@ store = {
     ],
 }
 
-# TODO здесь писать код
+for i in store:
+    price_all = 0
+    quantity_all = 0
+    for y in store[i]:
+        price_all += y['quantity']*y['price']
+        quantity_all += y['quantity']
+    print('{0} - {1} штук, стоимостью {2} рубля.'.format(
+        list(goods.keys())[list(goods.values()).index(i)],
+        quantity_all,
+        price_all
+    ))
+
