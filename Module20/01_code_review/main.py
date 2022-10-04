@@ -20,25 +20,46 @@ students = {
 }
 
 
-def f(dict):
-    lst = []
-    string = ''
-    for i in dict:
-        lst += (dict[i]['interests'])
-        string += dict[i]['surname']
-    cnt = 0
-    for s in string:
-        cnt += 1
-    return lst, cnt
+# def f(dict):
+#     lst = []
+#     string = ''
+#     for i in dict:
+#         lst += (dict[i]['interests'])
+#         string += dict[i]['surname']
+#     cnt = 0
+#     for s in string:
+#         cnt += 1
+#     return lst, cnt
+#
+#
+# pairs = []
+# for i in students:
+#     pairs += (i, students[i]['age'])
+#
+#
+# my_lst = f(students)[0]
+# l = f(students)[1]
+# print(my_lst, l)
 
+id_list = []
+interest_list = set()
+surname_long = 0
 
-pairs = []
-for i in students:
-    pairs += (i, students[i]['age'])
+for id_stud, student in students.items():
+    for data, values in student.items():
+        if data == 'age':
+            id_list.append((id_stud, values))
+        elif data == 'interests':
+            interest_list.symmetric_difference_update(set(values))
+        elif data == 'surname':
+            surname_long += len(values)
 
-
-my_lst = f(students)[0]
-l = f(students)[1]
-print(my_lst, l)
-
-# TODO исправить код
+print('Список пар "ID студента — возраст":{}'.format(
+    id_list)
+)
+print('Полный список интересов всех студентов:{}'.format(
+    interest_list)
+)
+print('Общая длина всех фамилий студентов:{}'.format(
+    surname_long)
+)

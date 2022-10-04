@@ -26,18 +26,21 @@ while True:
             while counter >= len(man_list):
                 counter -= len(man_list)
             delete(counter - 1)
-            begin_number = census(man_list)
-            counter = counting
+            if len(man_list) == 1:
+                print(f'\nОстался человек под номером {man_list[0]}')
+                break
+            else:
+                begin_number = census(man_list)
+                counter = counting
 
         elif counter < len(man_list) - man_list.index(begin_number):
             delete(man_list.index(begin_number) + counter - 1)
-            begin_number = census(man_list)
-            counter = counting
-
-        if len(man_list) == 1:
-            print(f'\nОстался человек под номером {man_list[0]}')
-            break
-
+            if len(man_list) == 1:
+                print(f'\nОстался человек под номером {man_list[0]}')
+                break
+            else:
+                begin_number = census(man_list)
+                counter = counting
     else:
         print(f'Игрока с номером {begin_number} нет среди участников.\n'
               f'Попробуйте еще раз!')
