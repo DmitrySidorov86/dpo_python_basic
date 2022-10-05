@@ -20,11 +20,11 @@ while True:
 
     if begin_number in man_list:
 
-        if counter >= len(man_list) - man_list.index(begin_number):
-            counter -= len(man_list) - man_list.index(begin_number)
-
-            while counter >= len(man_list):
-                counter -= len(man_list)
+        if counter >= len(man_list[man_list.index(begin_number):]):
+            counter -= len(man_list[man_list.index(begin_number):])
+            counter %= len(man_list)
+            #while counter >= len(man_list):
+                #counter -= len(man_list)
             delete(counter - 1)
             if len(man_list) == 1:
                 print(f'\nОстался человек под номером {man_list[0]}')
@@ -33,7 +33,7 @@ while True:
                 begin_number = census(man_list)
                 counter = counting
 
-        elif counter < len(man_list) - man_list.index(begin_number):
+        elif counter < len(man_list[man_list.index(begin_number):]):
             delete(man_list.index(begin_number) + counter - 1)
             if len(man_list) == 1:
                 print(f'\nОстался человек под номером {man_list[0]}')
