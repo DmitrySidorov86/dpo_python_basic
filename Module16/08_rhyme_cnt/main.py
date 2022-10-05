@@ -21,27 +21,33 @@ man_list = list(range(1, number + 1))
 begin_number = 0
 counter = counting
 
-while True:
+if len(man_list) == 1:
+    print(f'\nОстался человек под номером {man_list[0]}')
+else:
+    while True:
 
-    if man_list[begin_number] in man_list:
-        print(f'\nТекущий круг людей: {man_list}')
-        print(f'Начало счёта с номера:{man_list[begin_number]} ')
-        if counter >= len(man_list[begin_number:]):
-            counter -= len(man_list[begin_number:])
-            counter %= len(man_list)
-            delete(counter - 1)
-            if len(man_list) == 1:
-                print(f'\nОстался человек под номером {man_list[0]}')
-                break
-            else:
+        if man_list[begin_number] in man_list:
+            print(f'\nТекущий круг людей: {man_list}')
+            print(f'Начало счёта с номера:{man_list[begin_number]} ')
+            if counter >= len(man_list[begin_number:]):
+                counter -= len(man_list[begin_number:])
+                counter %= len(man_list)
+                delete(counter - 1)
+                if len(man_list) == 1:
+                    print(f'\nОстался человек под номером {man_list[0]}')
+                    break
+                else:
+                    begin_number = census(man_list)
+                    counter = counting
+
+            elif counter < len(man_list[begin_number:]):
+                delete(begin_number + counter - 1)
+                if len(man_list) == 1:
+                    print(f'\nОстался человек под номером {man_list[0]}')
+                    break
                 begin_number = census(man_list)
                 counter = counting
-
-        elif counter < len(man_list[begin_number:]):
-            delete(begin_number + counter - 1)
+        else:
+            print(f'Игрока с номером {begin_number} нет среди участников.\n'
+                  f'Попробуйте еще раз!')
             begin_number = census(man_list)
-            counter = counting
-    else:
-        print(f'Игрока с номером {begin_number} нет среди участников.\n'
-              f'Попробуйте еще раз!')
-        begin_number = census(man_list)
