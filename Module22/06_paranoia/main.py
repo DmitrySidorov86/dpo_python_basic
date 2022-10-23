@@ -1,6 +1,6 @@
 def change_one(simbl, count):
     for element in alphabet:
-        if simbl == letter:
+        if simbl == element:
             return alphabet[(alphabet.index(element) + count) % len(alphabet)]
 
 
