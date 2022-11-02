@@ -1,4 +1,5 @@
 import os
+# написать запрос на выбор папки
 
 
 def size(way):
@@ -14,12 +15,12 @@ def size(way):
                 dir_list.extend(dir_number)
                 if result:
                     size_list.extend(result)
-    except PermissionError as e:
-        item = 1
+    except PermissionError as exp:
+       print(f'{exp} ')
     return size_list, dir_list
 
 
-path = os.path.abspath(os.path.join('..', '..', '..'))
+path = os.path.abspath(os.path.join(os.path.sep))
 file_list, dir_list_one = size(path)
 print(path)
 print(f'Размер каталога (в КБ): {sum(file_list)/1024}')

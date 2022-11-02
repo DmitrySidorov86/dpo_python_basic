@@ -22,12 +22,10 @@ for i in text_simple:
     i_list = list(i)
 
     while count != abs(shift):
-
-        if shift > 0 :
+        if shift > 0:
             i_list.append(i_list.pop(0))
         else:
             i_list.insert(0, i_list.pop())
-
         text_one = ''.join(i_list)
         count += 1
 

@@ -3,7 +3,7 @@ while True:
     ip_adress = input('Введите IP:')
     error = 0
     ip_list = ip_adress.split('.')
-    if len(ip_list) < 4 :
+    if len(ip_list) < 4:
         print('Адрес — это четыре числа, разделённые точками.')
         error += 1
     else:
