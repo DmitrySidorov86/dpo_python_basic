@@ -23,6 +23,7 @@ def f2(x, y):
         z = round(y / x, 2)
     except ZeroDivisionError:
         print('На 0 делить нельзя')
+
     return z
 
 
