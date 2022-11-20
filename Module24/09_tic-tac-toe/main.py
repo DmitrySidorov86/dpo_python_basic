@@ -1,6 +1,6 @@
 class Board:
     def __init__(self):
-        self.board = {'1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
+        self.board = {str(i): i for i in range(1, 10)}
         self.player_list = list()
         for i in range(1, 3):
             if len(self.player_list) == 0:

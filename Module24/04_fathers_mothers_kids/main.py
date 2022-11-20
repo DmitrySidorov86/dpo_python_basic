@@ -3,12 +3,21 @@ import random
 
 class Parent:
 
-    def __init__(self):
-        self.name = input('Введите имя:')
-        self.age = int(input('Введите возраст:'))
-        child_number = int(input('Сколько у вас детей?:'))
-        if child_number != 0:
-            self.children = [Children(self.age) for _ in range(child_number)]
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        self.children = list()
+
+    def add_child(self, child_number):
+        for _ in range(child_number):
+            child_name = input('Как зовут ребенка?\n')
+            while True:
+                child_age = int(input('Возраст ребенка?\n'))
+                if child_age <= self.age - 16:
+                    break
+                else:
+                    print('Разница в возрасте с родителями должна быть не меньше 16 лет!')
+            self.children.append(Children(child_name, child_age))
 
     def self_info(self):
         print('\nИмя: {}\nВозраст: {}\n'.format(self.name, self.age))
@@ -29,19 +38,13 @@ class Parent:
 
 class Children:
 
-    def __init__(self, parent_age):
+    def __init__(self, name, age):
         self.hungry_meter = ['Голодный', 'Не очень хочет есть', 'Нормально покормлен', 'Объелся']
         self.emotions_meter = ['Плачет', 'Расстроен', 'Спокойный', 'Веселый']
         random_number_1 = random.randint(0, 3)
         random_number_2 = random.randint(0, 3)
-        self.child_name = input('Как зовут ребенка?\n')
-        while True:
-            age = int(input('Возраст ребенка?\n'))
-            if age <= parent_age-16:
-                self.child_age = age
-                break
-            else:
-                print('Разница в возрасте с родителями должна быть не меньше 16 лет!')
+        self.child_name = name
+        self.child_age = age
         self.hungry_status = self.hungry_meter[random_number_1]
         self.emotion_status = self.emotions_meter[random_number_2]
 
@@ -79,7 +82,8 @@ def child_check(child_list, condition):
                 print('У вас всего {} детей!'.format(len(child_list)))
 
 
-one = Parent()
+one = Parent('Ирина', 37)
+one.add_child(2)
 while True:
     question = int(input('\nЧто вы хотите сделать ? \nЧто бы посмотреть информацияю о себе введите 1.'
                          '\nЧто бы покормить ребенка нажмите 2.\nЧто бы успокоить ребенка нажмите 3.\n'))

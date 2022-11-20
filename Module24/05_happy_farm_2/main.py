@@ -1,6 +1,6 @@
 class Gardener:
-    def __init__(self):
-        self.name = input('Как зовут садовника? \n')
+    def __init__(self, name):
+        self.name = name
         self.working_bed = PotatoGarden()
 
     def harvest(self):
@@ -69,7 +69,7 @@ class Potato:
             self.index, Potato.states[self.state]))
 
 
-worker = Gardener()
+worker = Gardener('Валера')
 worker.info()
 
 while True:

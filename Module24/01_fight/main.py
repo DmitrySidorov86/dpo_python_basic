@@ -6,8 +6,8 @@ class Unit:
         self.number = number
         self.heals = heals
 
-    def lose_heals(self):
-        self.heals -= 20
+    def attack(self, victim):
+        victim.heals -= 20
 
     def print_unit_status(self):
         print('{} Warrior take 20 dammage, {} heals left.\n'.format(self.number, self.heals))
@@ -31,10 +31,12 @@ class Battle:
         warrior_number = random.randint(0, 1)
         if warrior_number == 0:
             print('The second warrior attacked the first warrior! ')
+            self.pare_of_warriors[1].attack(self.pare_of_warriors[0])
+            self.pare_of_warriors[0].print_unit_status()
         else:
             print('The first warrior attacked the second warrior! ')
-        self.pare_of_warriors[warrior_number].lose_heals()
-        self.pare_of_warriors[warrior_number].print_unit_status()
+            self.pare_of_warriors[0].attack(self.pare_of_warriors[1])
+            self.pare_of_warriors[1].print_unit_status()
         if self.pare_of_warriors[warrior_number].death_check():
             return True
         else:

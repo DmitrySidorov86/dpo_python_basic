@@ -3,7 +3,10 @@ class Student:
         self.sn = sn
         self.group = group_number
         self.grade = grade
-        self.average = sum(self.grade)/len(self.grade)
+        if len(self.grade) == 0:
+            self.average = 0
+        else:
+            self.average = sum(self.grade)/len(self.grade)
 
     def print_student(self):
         print('stud name: {}\nStud group: {}\nStud grade: {}'.format(self.sn, self.group, self.grade))

@@ -2,8 +2,8 @@ import random
 
 
 class Human:
-    def __init__(self):
-        self.name = input('Введите имя:')
+    def __init__(self, name):
+        self.name = name
         self.satiety = 50
 
     def play(self):
@@ -42,10 +42,11 @@ class Home:
     def add_room_mate(self):
         roomates_number = int(input('Сколько человек будет жить в квартире ? '))
         for number in range(roomates_number):
-            self.room_mates.append(Human())
+            roommate_name = input('Введите имя {} соседа:'.format(number+1))
+            self.room_mates.append(Human(roommate_name))
 
     def home_status(self):
-        print('В холодильнике:{} еды.\nв Тумбочке:{} денег.\n'.format(self.fridge,self.vault))
+        print('В холодильнике:{} еды.\nв Тумбочке:{} денег.\n'.format(self.fridge, self.vault))
 
 
 def what_to_do(resident, room):

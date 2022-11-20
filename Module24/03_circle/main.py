@@ -24,27 +24,30 @@ class Circle:
     def print_parametr(self, number):
         print('Координаты центра {} окружности ({}:{}) , радиус:{}'.format(number, self.x, self.y, self.r))
 
+    def cirlcle_compariso(self, index, circles_mass):
+        circle_number_list = [int(x) for x in range(len(circles_mass.circle_list))]
+        circle_number_list.remove(index)
+        intersection = 0
+        for list_index in range(len(circle_number_list)):
+            length_line = ((circles_mass.circle_list[index].x -
+                            circles_mass.circle_list[circle_number_list[list_index]].x) ** 2 +
+                           (circles_mass.circle_list[index].y -
+                            circles_mass.circle_list[circle_number_list[list_index]].y) ** 2) ** 0.5
+            # длинна отрезка
+            # между центрами кругов
+            radius_sum = circles_mass.circle_list[index].r + circles_mass.circle_list[circle_number_list[list_index]].r
+            if length_line <= radius_sum:
+                print('Окружность {}  пересекается с окружностью {} '.format(index + 1,
+                                                                             circle_number_list[list_index] + 1))
+                intersection += 1
+        if intersection == 0:
+            print('Окружность не пересекается с другими окружностями ')
+
 
 class СoordinateSystem:
     def __init__(self, circle_number):
         self.circle_list = [Circle(coordinate('X'), coordinate('Y'), radius())
                             for _ in range(circle_number)]
-
-    def cirlcle_compariso(self, index):
-        circle_number_list = [int(x) for x in range(len(self.circle_list))]
-        circle_number_list.remove(index)
-        intersection = 0
-        for list_index in range(len(circle_number_list)):
-            length_line = ((self.circle_list[index].x - self.circle_list[circle_number_list[list_index]].x)**2 +
-                           (self.circle_list[index].y -
-                            self.circle_list[circle_number_list[list_index]].y)**2)**0.5  #длинна отрезка
-                                                                                        # между центрами кругов
-            radius_sum = self.circle_list[index].r + self.circle_list[circle_number_list[list_index]].r
-            if length_line <= radius_sum:
-                print('Окружность {}  пересекается с окружностью {} '.format(index+1, circle_number_list[list_index]+1))
-                intersection += 1
-        if intersection == 0:
-            print('Окружность не пересекается с другими окружностями ')
 
     def print_circles(self):
         count = 1
@@ -100,4 +103,4 @@ while True:
                 ratio = float(input('\nВо сколько раз хотите увеличить радиус окружности?'))
                 circles.circle_list[circle_index - 1].circle_increase(ratio, circle_index)
             elif int(first_question) == 4:
-                circles.cirlcle_compariso(circle_index-1)
+                circles.circle_list[circle_index-1].cirlcle_compariso(circle_index-1, circles)
