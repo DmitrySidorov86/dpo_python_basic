@@ -4,11 +4,11 @@ class Water:
 
     def __add__(self, other):
         if isinstance(other, Air):
-            return 'Шторм'
+            return Storm()
         elif isinstance(other, Fire):
-            return 'Пар'
+            return Steam()
         elif isinstance(other, Earth):
-            return 'Грязь'
+            return Dirt()
         else:
             return None
 
@@ -19,11 +19,11 @@ class Fire:
 
     def __add__(self, other):
         if isinstance(other, Air):
-            return 'Молния'
+            return Lightning()
         elif isinstance(other, Water):
-            return 'Пар'
+            return Steam()
         elif isinstance(other, Earth):
-            return 'Лава'
+            return Lava()
         else:
             return None
 
@@ -36,11 +36,11 @@ class Air:
         print(self)
         print(other)
         if isinstance(other, Fire):
-            return 'Молния'
+            return Lightning()
         elif isinstance(other, Water):
-            return 'Шторм'
+            return Storm()
         elif isinstance(other, Earth):
-            return 'Пыль'
+            return Dust()
         else:
             return None
 
@@ -51,13 +51,43 @@ class Earth:
 
     def __add__(self, other):
         if isinstance(other, Fire):
-            return 'Лава'
+            return Lava()
         elif isinstance(other, Water):
-            return 'Грязь'
+            return Dirt()
         elif isinstance(other, Air):
-            return 'Пыль'
+            return Dust()
         else:
             return None
+
+
+class Storm:
+    def __str__(self):
+        return 'Шторм'
+
+
+class Dust:
+    def __str__(self):
+        return 'Пыль'
+
+
+class Lava:
+    def __str__(self):
+        return 'Лава'
+
+
+class Lightning:
+    def __str__(self):
+        return 'Молния'
+
+
+class Dirt:
+    def __str__(self):
+        return 'Грязь'
+
+
+class Steam:
+    def __str__(self):
+        return 'Пар'
 
 
 def magick(element_1, element_2):
