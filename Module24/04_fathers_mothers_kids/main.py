@@ -37,16 +37,16 @@ class Parent:
 
 
 class Children:
+    hungry_meter = ['голодный', 'не очень хочет есть', 'нормально покормлен', 'объелся']
+    emotions_meter = ['плачет', 'расстроен', 'спокойный', 'веселый']
 
     def __init__(self, name, age):
-        self.hungry_meter = ['Голодный', 'Не очень хочет есть', 'Нормально покормлен', 'Объелся']
-        self.emotions_meter = ['Плачет', 'Расстроен', 'Спокойный', 'Веселый']
         random_number_1 = random.randint(0, 3)
         random_number_2 = random.randint(0, 3)
         self.child_name = name
         self.child_age = age
-        self.hungry_status = self.hungry_meter[random_number_1]
-        self.emotion_status = self.emotions_meter[random_number_2]
+        self.hungry_status = Children.hungry_meter[random_number_1]
+        self.emotion_status = Children.emotions_meter[random_number_2]
 
     def info(self):
         print('Имя:{}.'.format(self.child_name))
